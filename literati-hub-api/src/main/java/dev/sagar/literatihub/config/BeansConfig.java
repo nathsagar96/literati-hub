@@ -33,7 +33,7 @@ public class BeansConfig {
   }
 
   @Bean
-  public AuditorAware<Integer> auditorAware(){
+  public AuditorAware<Integer> auditorAware() {
     return new ApplicationAuditAware();
   }
 

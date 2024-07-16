@@ -7,6 +7,7 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 
+import dev.sagar.literatihub.exception.OperationNotPermittedException;
 import jakarta.mail.MessagingException;
 import java.util.HashSet;
 import java.util.Set;
@@ -79,12 +80,18 @@ public class GlobalExceptionHandler {
 
   @ExceptionHandler(Exception.class)
   public ResponseEntity<ExceptionResponse> handleException(Exception exception) {
-    exception.printStackTrace();
     return ResponseEntity.status(INTERNAL_SERVER_ERROR)
         .body(
             ExceptionResponse.builder()
                 .businessErrorDescription("Internal Error, contact the admin")
                 .error(exception.getMessage())
                 .build());
+  }
+
+  @ExceptionHandler(OperationNotPermittedException.class)
+  public ResponseEntity<ExceptionResponse> handleException(
+      OperationNotPermittedException exception) {
+    return ResponseEntity.status(BAD_REQUEST)
+        .body(ExceptionResponse.builder().error(exception.getMessage()).build());
   }
 }
