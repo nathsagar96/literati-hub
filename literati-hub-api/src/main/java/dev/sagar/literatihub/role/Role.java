@@ -28,7 +28,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EntityListeners(AuditingEntityListener.class)
 public class Role {
 
-  @Id @GeneratedValue private Integer roleId;
+  @Id @GeneratedValue private Integer id;
 
   @Column(unique = true)
   private String name;
