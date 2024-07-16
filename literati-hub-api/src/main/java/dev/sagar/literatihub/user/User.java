@@ -1,5 +1,7 @@
 package dev.sagar.literatihub.user;
 
+import dev.sagar.literatihub.book.Book;
+import dev.sagar.literatihub.history.BookTransactionHistory;
 import dev.sagar.literatihub.role.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,6 +10,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.security.Principal;
 import java.time.LocalDate;
@@ -53,6 +56,12 @@ public class User implements UserDetails, Principal {
   @ManyToMany(fetch = FetchType.EAGER)
   private List<Role> roles;
 
+  @OneToMany(mappedBy = "owner")
+  private List<Book> books;
+
+  @OneToMany(mappedBy = "user")
+  private List<BookTransactionHistory> histories;
+
   @CreatedDate
   @Column(nullable = false, updatable = false)
   private LocalDateTime createdDate;
@@ -84,18 +93,8 @@ public class User implements UserDetails, Principal {
   }
 
   @Override
-  public boolean isAccountNonExpired() {
-    return true;
-  }
-
-  @Override
   public boolean isAccountNonLocked() {
     return !accountLocked;
-  }
-
-  @Override
-  public boolean isCredentialsNonExpired() {
-    return true;
   }
 
   @Override

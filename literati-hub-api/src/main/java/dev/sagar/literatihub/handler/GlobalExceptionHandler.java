@@ -44,7 +44,7 @@ public class GlobalExceptionHandler {
   }
 
   @ExceptionHandler(BadCredentialsException.class)
-  public ResponseEntity<ExceptionResponse> handleException(BadCredentialsException exception) {
+  public ResponseEntity<ExceptionResponse> handleException() {
     return ResponseEntity.status(UNAUTHORIZED)
         .body(
             ExceptionResponse.builder()
@@ -63,7 +63,7 @@ public class GlobalExceptionHandler {
   @ExceptionHandler(MethodArgumentNotValidException.class)
   public ResponseEntity<ExceptionResponse> handleException(
       MethodArgumentNotValidException exception) {
-    Set<String> errors = new HashSet<String>();
+    Set<String> errors = new HashSet<>();
     exception
         .getBindingResult()
         .getAllErrors()

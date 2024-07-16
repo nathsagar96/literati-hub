@@ -22,7 +22,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 public class JwtFilter extends OncePerRequestFilter {
 
   private final JwtService jwtService;
-  private UserDetailsService userDetailsService;
+  private final UserDetailsService userDetailsService;
 
   @Override
   protected void doFilterInternal(
