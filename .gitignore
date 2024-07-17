@@ -16,6 +16,18 @@
 /literati-hub-api/mvnw
 /literati-hub-api/mvnw.cmd
 
+# Ignore files and directories for Angular application
+/literati-hub-ui/node_modules/
+/literati-hub-ui/dist/
+/literati-hub-ui/tmp/
+/literati-hub-ui/.angular
+/literati-hub-ui/.vscode
+/literati-hub-ui/.idea
+/literati-hub-ui/.DS_Store
+/literati-hub-ui/.env
+
+
+
 # Ignore IDE specific files
 /.idea/
 /*.iml
