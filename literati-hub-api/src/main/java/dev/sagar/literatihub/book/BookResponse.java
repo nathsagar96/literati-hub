@@ -12,6 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookResponse {
+
   private Integer id;
   private String title;
   private String authorName;

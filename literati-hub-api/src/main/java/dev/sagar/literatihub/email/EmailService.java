@@ -16,6 +16,7 @@ import org.thymeleaf.spring6.SpringTemplateEngine;
 @Service
 @RequiredArgsConstructor
 public class EmailService {
+
   private final JavaMailSender mailSender;
   private final SpringTemplateEngine templateEngine;
 

@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 public enum BusinessErrorCodes {
+
   NO_CODE(0, NOT_IMPLEMENTED, "No Code"),
   INCORRECT_CURRENT_PASSWORD(300, BAD_REQUEST, "Current Password is incorrect"),
   NEW_PASSWORD_DOES_NOT_MATCH(301, BAD_REQUEST, "New password does not match"),

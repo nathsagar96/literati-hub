@@ -1,5 +1,6 @@
 package dev.sagar.literatihub.book;
 
+import dev.sagar.literatihub.file.FileUtils;
 import dev.sagar.literatihub.history.BookTransactionHistory;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,7 @@ public class BookMapper {
         .archived(book.isArchived())
         .shareable(book.isShareable())
         .owner(book.getOwner().getFullName())
-        //            .cover()
+        .cover(FileUtils.readFileFromLocation(book.getBookCover()))
         .build();
   }
 
