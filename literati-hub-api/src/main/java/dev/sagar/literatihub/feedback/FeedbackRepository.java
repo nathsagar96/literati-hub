@@ -13,7 +13,7 @@ public interface FeedbackRepository extends JpaRepository<Feedback, Integer> {
       """
         SELECT feedback
         FROM Feedback feedback
-        WHERE feedback.boo.id = :bookId
+        WHERE feedback.book.id = :bookId
       """)
   Page<Feedback> findAllByBookId(Integer bookId, Pageable pageable);
 }

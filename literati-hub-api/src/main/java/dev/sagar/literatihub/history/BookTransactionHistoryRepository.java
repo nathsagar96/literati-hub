@@ -45,18 +45,18 @@ public interface BookTransactionHistoryRepository
         WHERE transaction.user.id = :userId
         AND transaction.book.id = :bookId
         AND transaction.returned = false
-        AND transaction.returnedApproved = false
+        AND transaction.returnApproved = false
       """)
-  Optional<BookTransactionHistory> findByBookIdAndUserId(Integer bookId, Integer UserId);
+  Optional<BookTransactionHistory> findByBookIdAndUserId(Integer bookId, Integer userId);
 
   @Query(
       """
         SELECT transaction
         FROM BookTransactionHistory transaction
-        WHERE transaction.owner.id = :userId
+        WHERE transaction.book.owner.id = :userId
         AND transaction.book.id = :bookId
         AND transaction.returned = true
-        AND transaction.returnedApproved = false
+        AND transaction.returnApproved = false
       """)
   Optional<BookTransactionHistory> findByBookIdAndOwnerId(Integer bookId, Integer userId);
 }
