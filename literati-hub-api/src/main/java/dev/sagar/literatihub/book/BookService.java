@@ -116,7 +116,7 @@ public class BookService {
             .orElseThrow(() -> new EntityNotFoundException("No book found with id:" + bookId));
     User user = (User) connectedUser.getPrincipal();
     if (!Objects.equals(book.getOwner().getId(), user.getId())) {
-      throw new OperationNotPermittedException("You cannot update other's books shareable status");
+      throw new OperationNotPermittedException("You are not the owner of this book");
     }
     book.setShareable(!book.isShareable());
     bookRepository.save(book);
@@ -130,7 +130,7 @@ public class BookService {
             .orElseThrow(() -> new EntityNotFoundException("No book found with id:" + bookId));
     User user = (User) connectedUser.getPrincipal();
     if (!Objects.equals(book.getOwner().getId(), user.getId())) {
-      throw new OperationNotPermittedException("You cannot update other's books archived status");
+      throw new OperationNotPermittedException("You are not the owner of this book");
     }
     book.setArchived(!book.isArchived());
     bookRepository.save(book);

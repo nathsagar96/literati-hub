@@ -13,21 +13,21 @@ import lombok.Setter;
 @Builder
 public class RegistrationRequest {
 
-  @NotEmpty(message = "Firstname is mandatory")
-  @NotBlank(message = "Firstname is mandatory")
+  @NotEmpty(message = "First name is required")
+  @NotBlank(message = "First name cannot be empty")
   private String firstname;
 
-  @NotEmpty(message = "Lastname is mandatory")
-  @NotBlank(message = "Lastname is mandatory")
+  @NotEmpty(message = "Last name is required")
+  @NotBlank(message = "Last name cannot be empty")
   private String lastname;
 
-  @NotEmpty(message = "Email is mandatory")
-  @NotBlank(message = "Email is mandatory")
-  @Email
+  @NotEmpty(message = "Email address is required")
+  @NotBlank(message = "Email address cannot be empty")
+  @Email(message = "Please enter a valid email address")
   private String email;
 
-  @NotEmpty(message = "Password is mandatory")
-  @NotBlank(message = "Password is mandatory")
-  @Size(min = 8, message = "Password should be at least 8 characters")
+  @NotEmpty(message = "Password is required")
+  @NotBlank(message = "Password cannot be empty")
+  @Size(min = 8, message = "Password must be at least 8 characters long")
   private String password;
 }

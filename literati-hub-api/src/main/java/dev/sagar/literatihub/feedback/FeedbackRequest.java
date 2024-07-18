@@ -8,7 +8,12 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
 public record FeedbackRequest(
-    @Positive(message = "200") @Min(value = 0, message = "201") @Max(value = 5, message = "202")
+    @Positive(message = "Note must be a positive number.")
+        @Min(value = 0, message = "Note must be greater than or equal to 0.")
+        @Max(value = 5, message = "Note must be less than or equal to 5.")
         Double note,
-    @NotNull(message = "203") @NotEmpty(message = "203") @NotBlank(message = "203") String comment,
-    @NotBlank(message = "204") Integer bookId) {}
+    @NotNull(message = "Comment cannot be null.")
+        @NotEmpty(message = "Comment cannot be empty.")
+        @NotBlank(message = "Comment cannot be blank.")
+        String comment,
+    @NotBlank(message = "Book ID cannot be blank.") Integer bookId) {}
