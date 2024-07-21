@@ -20,11 +20,11 @@ export class ActivateAccountComponent {
   ) { }
 
 
-  onCodeCompleted(token: string): void {
+  onCodeCompleted(token: string) {
     this.confirmAccount(token);
   }
 
-  confirmAccount(token: string): void {
+  confirmAccount(token: string) {
     this.authenticationService.confirm({
       token
     }).subscribe({

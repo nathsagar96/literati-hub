@@ -18,16 +18,16 @@ export class LoginComponent {
     private authenticationService: AuthenticationService,
     private tokenService: TokenService) { }
 
-  login(): void {
+  login() {
     this.errorMsg = [];
     this.authenticationService.authenticate({
       body: this.authRequest
     }).subscribe({
-      next: (res): void => {
+      next: (res) => {
         this.tokenService.token = res.token as string;
         this.router.navigate(['books']);
       },
-      error: (err): void => {
+      error: (err) => {
         console.error(err);
         if (err.error.validationErrors) {
           this.errorMsg = err.error.validationErrors;
@@ -37,7 +37,7 @@ export class LoginComponent {
       }
     })
   }
-  register(): void {
+  register() {
     this.router.navigate(['register']);
   }
 }

@@ -27,10 +27,10 @@ export class RegisterComponent {
     this.authenticationService.register({
       body: this.registrationRequest
     }).subscribe({
-      next: (res): void => {
+      next: (res) => {
         this.router.navigate(['activate-account']);
       },
-      error: (err): void => {
+      error: (err) => {
         this.errorMsg = err.error.validationErrors;
       }
     });
