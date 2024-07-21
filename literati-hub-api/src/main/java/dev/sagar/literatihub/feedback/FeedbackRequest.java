@@ -16,4 +16,4 @@ public record FeedbackRequest(
         @NotEmpty(message = "Comment cannot be empty.")
         @NotBlank(message = "Comment cannot be blank.")
         String comment,
-    @NotBlank(message = "Book ID cannot be blank.") Integer bookId) {}
+    @NotNull(message = "Book ID cannot be blank.") Integer bookId) {}
