@@ -74,7 +74,7 @@ export class BookListComponent implements OnInit {
     }).subscribe({
       next: () => {
         this.level = 'success';
-        this.message = 'Book successfully added to the list';
+        this.message = 'Book borrowed successfully';
       }, error: (err) => {
         this.level = 'error';
         this.message = err.error.error;
