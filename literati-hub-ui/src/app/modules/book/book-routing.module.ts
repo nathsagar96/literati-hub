@@ -16,7 +16,7 @@ const routes: Routes = [
         component: BookListComponent
       },
       {
-        path: 'books',
+        path: 'my-books',
         component: MyBooksComponent
       },
       {
@@ -27,7 +27,7 @@ const routes: Routes = [
         path: 'manage/:bookId',
         component: ManageBookComponent
       }, {
-        path: 'borrowed-books',
+        path: 'my-borrowed-books',
         component: BorrowedBookListComponent
       }
     ]

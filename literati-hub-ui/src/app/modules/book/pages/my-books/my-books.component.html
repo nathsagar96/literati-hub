@@ -30,7 +30,6 @@
           <i class="fa-solid fa-angles-left"></i>
         </a>
       </li>
-
       <li class="page-item">
         <a
           (click)="goToPreviousPage()"
@@ -45,7 +44,7 @@
       <li
         class="page-item"
         *ngFor="
-          let _ of [].constructor(this.bookResponse.totalPages);
+          let _ of [].constructor(bookResponse.totalPages);
           let pageIndex = index
         "
       >

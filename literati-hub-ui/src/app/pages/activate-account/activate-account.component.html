@@ -1,7 +1,7 @@
 <div class="container" *ngIf="submitted; else codeForm">
   <div class="activate-message" *ngIf="isOk; else activationError">
-    <h2>Activation succesful!</h2>
-    <p>You account has been succesfully activated.</p>
+    <h2>Activation Successful!</h2>
+    <p>Your account has been successfully activated.</p>
     <button class="btn btn-primary" (click)="redirectToLogin()">
       Go to Login
     </button>
@@ -20,15 +20,14 @@
 
 <ng-template #codeForm>
   <div class="container">
-    <div class="text-center" style="width: 400px">
+    <div class="code-form text-center mx-auto" style="max-width: 400px">
       <h2>Type your activation code</h2>
       <code-input
         [isCodeHidden]="false"
         [codeLength]="6"
         [code]="'number'"
         (codeCompleted)="onCodeCompleted($event)"
-      >
-      </code-input>
+      ></code-input>
     </div>
   </div>
 </ng-template>
