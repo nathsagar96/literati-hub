@@ -1,11 +1,11 @@
-<div class="rating">
+<div class="flex items-center">
   <ng-container *ngFor="let _ of [].constructor(fullStars); let i = index">
-    <i class="fas fa-star text-warning"></i>
+    <i class="fas fa-star text-yellow-500"></i>
   </ng-container>
   <ng-container *ngIf="halfStars">
-    <i class="fas fa-star-half-alt text-warning"></i>
+    <i class="fas fa-star-half-alt text-yellow-500"></i>
   </ng-container>
   <ng-container *ngFor="let _ of [].constructor(emptyStars); let i = index">
-    <i class="fas fa-star text-muted"></i>
+    <i class="fas fa-star text-gray-300"></i>
   </ng-container>
 </div>

@@ -8,23 +8,15 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class MenuComponent implements OnInit {
   username: string = '';
+  isMobileMenuOpen = false;
 
+  constructor() { }
   ngOnInit(): void {
-    this.setActiveLink();
     this.getUsernameFromToken();
   }
 
-  setActiveLink() {
-    const linkColor = document.querySelectorAll('.nav-link');
-    linkColor.forEach(link => {
-      if (window.location.href.endsWith(link.getAttribute('href') || '')) {
-        link.classList.add('active');
-      }
-      link.addEventListener('click', () => {
-        linkColor.forEach(link => link.classList.remove('active'));
-        link.classList.add('active');
-      });
-    });
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 
   getUsernameFromToken() {
