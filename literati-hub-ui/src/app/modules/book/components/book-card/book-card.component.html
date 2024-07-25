@@ -11,10 +11,13 @@
     alt="Book Cover"
   />
   <div class="px-6 py-4 flex flex-col h-48">
-    <div class="font-bold text-xl mb-2 h-14 overflow-hidden">
+    <div class="font-bold text-xl mb-2 h-48 overflow-hidden">
       {{ book.title }}
     </div>
-    <p class="text-gray-700 text-base h-24 overflow-hidden mt-2">
+    <div class="text-gray-600 text-base h-14 overflow-hidden mt-1">
+      {{ book.authorName }}
+    </div>
+    <p class="text-gray-700 text-base h-32 overflow-hidden mt-2">
       {{ book.synopsis }}
     </p>
   </div>
