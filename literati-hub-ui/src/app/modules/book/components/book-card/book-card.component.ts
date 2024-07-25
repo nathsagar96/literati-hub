@@ -39,14 +39,9 @@ export class BookCardComponent {
 
   @Output() private share: EventEmitter<BookResponse> = new EventEmitter();
   @Output() private archive: EventEmitter<BookResponse> = new EventEmitter();
-  @Output() private wishlist: EventEmitter<BookResponse> = new EventEmitter();
   @Output() private borrow: EventEmitter<BookResponse> = new EventEmitter();
   @Output() private edit: EventEmitter<BookResponse> = new EventEmitter();
-  @Output() private details: EventEmitter<BookResponse> = new EventEmitter();
-
-  onShowDetails() {
-    this.details.emit(this._book);
-  }
+  
   onBorrow() {
     this.borrow.emit(this._book);
   }
@@ -60,9 +55,4 @@ export class BookCardComponent {
   onEdit() {
     this.edit.emit(this._book);
   }
-  onAddToWishlist() {
-    this.wishlist.emit(this._book);
-  }
-
-
 }

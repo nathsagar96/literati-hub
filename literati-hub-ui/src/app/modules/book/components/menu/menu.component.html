@@ -1,66 +1,136 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="javascript:void(0)">LiteratiHub</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/books">
-            <i class="fas fa-home-alt"></i>&nbsp;Home
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="my-books">
-            <i class="fas fa-book"></i>&nbsp;My Books
-          </a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            aria-current="page"
-            routerLink="my-returned-books"
+<nav class="bg-gray-800">
+  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <div class="relative flex h-16 items-center justify-between">
+      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        <!-- Mobile menu button-->
+        <button
+          id="mobile-menu-button"
+          type="button"
+          (click)="toggleMobileMenu()"
+          class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+          aria-controls="mobile-menu"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg
+            *ngIf="!isMobileMenuOpen"
+            class="block h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
           >
-            <i class="fas fa-book"></i>&nbsp;Returned Books
-          </a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            aria-current="page"
-            routerLink="my-borrowed-books"
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+          <svg
+            *ngIf="isMobileMenuOpen"
+            class="block h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
           >
-            <i class="fas fa-book"></i>&nbsp;Borrowed Books
-          </a>
-        </li>
-      </ul>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
+      >
+        <div class="flex flex-shrink-0 items-center">
+          <img
+            class="h-8 w-auto"
+            src="https://via.placeholder.com/150x50?text=Logo"
+            alt="Logo"
+          />
+        </div>
+        <div class="hidden sm:ml-6 sm:block">
+          <div class="flex space-x-4">
+            <a
+              routerLink="/books"
+              routerLinkActive="bg-gray-900 text-white"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+              >Home</a
+            >
+            <a
+              routerLink="my-books"
+              routerLinkActive="bg-gray-900 text-white"
+              class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+              >My Books</a
+            >
+            <a
+              routerLink="my-returned-books"
+              routerLinkActive="bg-gray-900 text-white"
+              class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+              >Returned Books</a
+            >
+            <a
+              routerLink="my-borrowed-books"
+              routerLinkActive="bg-gray-900 text-white"
+              class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+              >Borrowed Books</a
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+      >
+        <span class="hidden md:block text-gray-300 mr-4"
+          >Welcome, {{ username }}!</span
+        >
+        <button
+          (click)="logout()"
+          class="bg-red-600 text-white px-3 py-2 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-red-500"
+        >
+          Logout
+        </button>
+      </div>
+    </div>
+  </div>
 
-      <form class="d-flex gap-2 align-items-center" role="search">
-        <input
-          class="form-control"
-          type="text"
-          placeholder="Find a book"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">
-          <i class="fas fa-search"></i>
-        </button>
-        <span>Welcome</span>
-        <span class="text-capitalize fw-bold">{{ username }}</span>
-        <button class="btn btn-link" type="button" (click)="logout()">
-          <i class="fas fa-door-open"></i>
-        </button>
-      </form>
+  <!-- Mobile menu, show/hide based on menu state. -->
+  <div
+    class="sm:hidden"
+    id="mobile-menu"
+    [ngClass]="{ hidden: !isMobileMenuOpen }"
+  >
+    <div class="space-y-1 px-2 pb-3 pt-2">
+      <a
+        routerLink="/books"
+        routerLinkActive="bg-gray-900 text-white"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+        >Home</a
+      >
+      <a
+        routerLink="my-books"
+        routerLinkActive="bg-gray-900 text-white"
+        class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+        >My Books</a
+      >
+      <a
+        routerLink="my-returned-books"
+        routerLinkActive="bg-gray-900 text-white"
+        class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+        >Returned Books</a
+      >
+      <a
+        routerLink="my-borrowed-books"
+        routerLinkActive="bg-gray-900 text-white"
+        class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+        >Borrowed Books</a
+      >
     </div>
   </div>
 </nav>

@@ -1,27 +1,38 @@
-<div class="container" *ngIf="submitted; else codeForm">
-  <div class="activate-message" *ngIf="isOk; else activationError">
-    <h2>Activation Successful!</h2>
-    <p>Your account has been successfully activated.</p>
-    <button class="btn btn-primary" (click)="redirectToLogin()">
-      Go to Login
-    </button>
-  </div>
-
-  <ng-template #activationError>
-    <div class="activate-error">
-      <h2>Activation Failed</h2>
-      <p>{{ message }}</p>
-      <button class="btn btn-primary" (click)="submitted = false">
-        Try Again
+<div
+  class="min-h-screen flex items-center justify-center bg-gray-100"
+  *ngIf="submitted; else codeForm"
+>
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md text-center">
+    <div class="activate-message" *ngIf="isOk; else activationError">
+      <h2 class="text-2xl font-bold mb-4">Activation Successful!</h2>
+      <p class="mb-4">Your account has been successfully activated.</p>
+      <button
+        class="w-full bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        (click)="redirectToLogin()"
+      >
+        Go to Login
       </button>
     </div>
-  </ng-template>
+
+    <ng-template #activationError>
+      <div class="activate-error">
+        <h2 class="text-2xl font-bold mb-4">Activation Failed</h2>
+        <p class="mb-4">{{ message }}</p>
+        <button
+          class="w-full bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          (click)="submitted = false"
+        >
+          Try Again
+        </button>
+      </div>
+    </ng-template>
+  </div>
 </div>
 
 <ng-template #codeForm>
-  <div class="container">
-    <div class="code-form text-center mx-auto" style="max-width: 400px">
-      <h2>Type your activation code</h2>
+  <div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md text-center">
+      <h2 class="text-2xl font-bold mb-4">Type your activation code</h2>
       <code-input
         [isCodeHidden]="false"
         [codeLength]="6"
