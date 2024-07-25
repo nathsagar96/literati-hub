@@ -1,115 +1,109 @@
-<h2>My Returned Books</h2>
-<hr />
-<div
-  *ngIf="message"
-  class="alert"
-  [class.alert-danger]="level === 'error'"
-  [class.alert-success]="level === 'success'"
->
-  <p>{{ message }}</p>
-</div>
-<div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Title</th>
-        <th scope="col">Author</th>
-        <th scope="col">ISBN</th>
-        <th scope="col">Rating</th>
-        <th scope="col"><i class="fas fa-cogs"></i></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let book of returnedBooks.content; let index = index">
-        <th scope="row">{{ index + 1 }}</th>
-        <td>{{ book.title }}</td>
-        <td>{{ book.authorName }}</td>
-        <td>{{ book.isbn }}</td>
-        <td><i class="fas fa-star text-warning"></i>{{ book.rating }}</td>
-        <td>
-          <div class="d-flex gap-2">
-            <i
-              *ngIf="book.returned"
-              class="fa-regular fa-paper-plane text-primary"
-            ></i>
-            <i
-              *ngIf="!book.returned"
-              class="fa-solid fa-paper-plane text-success"
-            ></i>
-            <i
-              class="cursor-pointer fa-solid fa-circle-check"
-              (click)="approveBookReturn(book)"
-              [class.text-success]="book.returnApproved"
-            ></i>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="d-flex justify-content-center mt-3">
+<div class="container mx-auto p-4">
+  <h2 class="text-3xl font-semibold mb-4">My Returned Books</h2>
+  <hr class="mb-4 border-gray-300" />
+
+  <!-- Alert Message -->
+  <div *ngIf="message" class="mb-4">
+    <div
+      class="p-4 rounded-lg"
+      [ngClass]="{
+        'bg-red-100 text-red-800': level === 'error',
+        'bg-green-100 text-green-800': level === 'success'
+      }"
+    >
+      {{ message }}
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div
+      *ngFor="let book of returnedBooks.content; let index = index"
+      class="bg-white p-4 rounded-lg shadow-md flex flex-col"
+    >
+      <div class="flex-grow">
+        <h3 class="text-xl font-semibold mb-2">{{ book.title }}</h3>
+        <p class="text-gray-700 mb-2">Author: {{ book.authorName }}</p>
+        <p class="text-gray-700 mb-2">ISBN: {{ book.isbn }}</p>
+        <div class="flex items-center">
+          <i class="fas fa-star text-yellow-400 mr-2"></i>
+          <span>{{ book.rating }}</span>
+        </div>
+      </div>
+      <div class="flex gap-2 mt-4 justify-end">
+        <i
+          *ngIf="book.returned"
+          class="fa-regular fa-paper-plane text-primary"
+        ></i>
+        <i
+          *ngIf="!book.returned"
+          class="fa-solid fa-paper-plane text-green-500"
+        ></i>
+        <i
+          class="cursor-pointer fa-solid fa-circle-check"
+          (click)="approveBookReturn(book)"
+          [ngClass]="{ 'text-green-500': book.returnApproved }"
+        ></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center mt-6">
     <nav aria-label="Page navigation">
-      <ul class="pagination">
-        <li class="page-item">
-          <a
+      <ul class="inline-flex items-center space-x-2">
+        <li>
+          <button
             (click)="goToFirstPage()"
-            class="page-link"
-            href="javascript:void(0)"
+            class="px-3 py-1 rounded border border-gray-300 bg-gray-100 hover:bg-gray-200 text-gray-800 disabled:opacity-50"
             aria-label="First"
-            [class.disabled]="page === 0"
+            [disabled]="page === 0"
           >
             <i class="fa-solid fa-angles-left"></i>
-          </a>
+          </button>
         </li>
-        <li class="page-item">
-          <a
+        <li>
+          <button
             (click)="goToPreviousPage()"
-            class="page-link"
-            href="javascript:void(0)"
+            class="px-3 py-1 rounded border border-gray-300 bg-gray-100 hover:bg-gray-200 text-gray-800 disabled:opacity-50"
             aria-label="Previous"
-            [class.disabled]="page === 0"
+            [disabled]="page === 0"
           >
             <i class="fa-solid fa-angle-left"></i>
-          </a>
+          </button>
         </li>
         <li
-          class="page-item"
           *ngFor="
             let _ of [].constructor(returnedBooks.totalPages);
             let pageIndex = index
           "
         >
-          <a
+          <button
             (click)="goToPage(pageIndex)"
-            class="page-link"
-            href="javascript:void(0)"
+            class="px-3 py-1 rounded border border-gray-300 bg-gray-100 hover:bg-gray-200 text-gray-800"
             aria-label="Page"
-            [class.active]="page === pageIndex"
+            [ngClass]="{ 'bg-gray-200 text-gray-800': page === pageIndex }"
           >
             {{ pageIndex + 1 }}
-          </a>
+          </button>
         </li>
-        <li class="page-item">
-          <a
+        <li>
+          <button
             (click)="goToNextPage()"
-            class="page-link"
-            href="javascript:void(0)"
+            class="px-3 py-1 rounded border border-gray-300 bg-gray-100 hover:bg-gray-200 text-gray-800 disabled:opacity-50"
             aria-label="Next"
-            [class.disabled]="isLastPage"
+            [disabled]="isLastPage"
           >
             <i class="fa-solid fa-chevron-right"></i>
-          </a>
+          </button>
         </li>
-        <li class="page-item">
-          <a
+        <li>
+          <button
             (click)="goToLastPage()"
-            class="page-link"
-            href="javascript:void(0)"
+            class="px-3 py-1 rounded border border-gray-300 bg-gray-100 hover:bg-gray-200 text-gray-800 disabled:opacity-50"
             aria-label="Last"
-            [class.disabled]="isLastPage"
+            [disabled]="isLastPage"
           >
             <i class="fa-solid fa-angles-right"></i>
-          </a>
+          </button>
         </li>
       </ul>
     </nav>
