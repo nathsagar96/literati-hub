@@ -20,34 +20,39 @@ To set up the backend of the LiteratiHub project, follow these steps:
 
 1. Clone the repository:
 
-    ```bash
-    git clone https://github.com/nathsagar96/literati-hub.git
-    ```
+   ```bash
+   git clone https://github.com/nathsagar96/literati-hub.git
+   ```
 
 2. Run the Docker Compose file:
 
-    ```bash
-    docker-compose up -d
-    ```
+   ```bash
+   docker-compose up -d
+   ```
 
 3. Navigate to the `literati-hub-api` directory:
 
-    ```bash
-    cd literati-hub-api
-    ```
+   ```bash
+   cd literati-hub
+   cd literati-hub-api
+   ```
 
 4. Install dependencies (assuming Maven is installed):
 
-    ```bash
-    mvn clean install
-    ```
+   ```bash
+   mvn clean install
+   ```
 
 5. Run the application (replace `x.x.x` with the current version from the `pom.xml` file):
 
-    ```bash
-    java -jar target/book-network-api-x.x.x.jar
-    ```
+   ```bash
+   java -jar target/book-network-api-x.x.x.jar
+   ```
 
 6. Access the API documentation using Swagger UI:
 
    Open a web browser and go to `http://localhost:8088/swagger-ui/index.html`.
+
+## Contributing
+
+Feel free to contribute to the project by submitting pull requests or opening issues. Make sure to follow the coding standards and conventions used in the project.

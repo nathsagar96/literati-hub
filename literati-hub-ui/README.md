@@ -1,27 +1,62 @@
-# LiteratiHubUi
+# LiteratiHub - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.14.
+## Overview
 
-## Development server
+The front-end of the LiteratiHub project is designed to provide an intuitive and responsive user interface for interacting with the LiteratiHub backend. Built with Angular and styled using Tailwind CSS, this front-end application delivers a seamless experience for users to manage their book-related activities and account information.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Technologies Used
 
-## Code scaffolding
+- **Angular**: A powerful front-end framework for building single-page applications (SPAs).
+- **Tailwind CSS**: A utility-first CSS framework for creating custom designs directly in your markup.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Setup Instructions
 
-## Build
+To set up the front-end of the LiteratiHub project, follow these steps:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. **Clone the Repository**:
 
-## Running unit tests
+   ```bash
+   git clone https://github.com/nathsagar96/literati-hub.git
+   ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. **Navigate to the Project Directory**:
 
-## Running end-to-end tests
+   ```bash
+   cd literati-hub
+   cd literati-hub-ui
+   ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3. **Install Dependencies**:
 
-## Further help
+   Ensure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed. Then run:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+   ```bash
+   npm install
+   ```
+
+4. **Start the Development Server**:
+
+   ```bash
+   npm start
+   ```
+
+   This will start the development server and open the application in your default web browser.
+
+5. **Build for Production**:
+
+   To create a production-ready build, run:
+
+   ```bash
+   npm run build
+   ```
+
+   The build files will be located in the `dist/` directory.
+
+## Development
+
+- **Angular CLI**: Use Angular CLI commands to generate components, services, and other Angular artifacts.
+- **Tailwind CSS**: Customize styles using Tailwind’s utility classes directly in your templates and components.
+
+## Contributing
+
+Feel free to contribute to the project by submitting pull requests or opening issues. Make sure to follow the coding standards and conventions used in the project.
